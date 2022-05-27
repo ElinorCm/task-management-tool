@@ -1,0 +1,36 @@
+version: '3.5'
+# version de syntax de Docker Compose
+
+services:
+  # indispensable
+
+  postgres:
+    # container_name: postgres_container - enlever car pas utile
+    image: library/postgres
+    environment:
+      # variable d'environement
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /data/postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+    env_file:
+      - .env
+    # fichier où sont les variables d'environnement 
+    volumes:
+      - postgres:/data/postgres
+      - ./back/data:/docker-entrypoint-initdb.d/
+      # équivalent de COPY dans le dockerfile
+      # sera lié au moment où on lance le container 
+      # va chercher le(s) fichier(s) à chaque docker up 
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+    # instruction docker compose avec plusieurs valeurs possibles : always 
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
