@@ -4,6 +4,20 @@ version: '3.5'
 services:
   # indispensable
 
+  back:
+    build: ./back
+    # pour lui dire où est l'image 
+    # on créer une image car toutes les instructions ne pourraient pas aller ici +-
+    environment:
+      PORT: ${PORT}
+      HOST: ${HOST}
+      PG_URL: ${PG_URL}
+      SESSION_SECRET : ${SESSION_SECRET}
+    env_file: 
+      - .env
+    ports:
+      - "3000:3000"
+
   postgres:
     # container_name: postgres_container - enlever car pas utile
     image: library/postgres
@@ -34,3 +48,4 @@ networks:
 
 volumes:
   postgres:
+
