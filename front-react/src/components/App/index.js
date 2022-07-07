@@ -5,16 +5,20 @@ import Header from 'src/components/Header';
 import Lists from 'src/components/Lists';
 import Menu from 'src/components/Menu';
 
-import { createListInputValue } from 'src/store/actions';
+import { createListsInputValue, createCardsInputValue } from 'src/store/actions';
 import './styles.scss';
 
 // == Composant
 function App() {
   const lists = useSelector((state) => state.lists);
+  const cards = useSelector((state) => state.cards);
   const dispatch = useDispatch();
   useEffect(() => {
     lists.forEach((list) => {
-      dispatch(createListInputValue(list.id));
+      dispatch(createListsInputValue(list.id));
+    });
+    cards.forEach((card) => {
+      dispatch(createCardsInputValue(card.id));
     });
   }, []);
   return (

@@ -2,7 +2,10 @@ import lists from 'src/data/lists';
 import cards from 'src/data/cards';
 import tags from 'src/data/tags';
 
-import { CREATE_LIST_INPUT_VALUE } from 'src/store/actions';
+import {
+  CREATE_LISTS_INPUT_VALUE,
+  CREATE_CARDS_INPUT_VALUE,
+} from 'src/store/actions';
 
 /* eslint-disable default-param-last */
 const initialState = {
@@ -16,10 +19,15 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   // switch case pour réagir a nos actions
   switch (action.type) {
-    case CREATE_LIST_INPUT_VALUE:
+    case CREATE_LISTS_INPUT_VALUE:
       return {
         ...state,
         listsInputValue: [...state.listsInputValue, { [action.id]: '' }],
+      };
+    case CREATE_CARDS_INPUT_VALUE:
+      return {
+        ...state,
+        cardsInputValue: [...state.cardsInputValue, { [action.id]: '' }],
       };
     default:
       return state;
