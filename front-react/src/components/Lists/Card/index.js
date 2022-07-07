@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Card as CardUI,
@@ -9,9 +10,15 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 
 import Form from 'src/components/Lists/Form';
+import { findIsOpenbyCardId } from 'src/store/selectors';
 import './card.scss';
 
 function Card({ name, id }) {
+  const isCardFormOpen = useSelector((state) => findIsOpenbyCardId(
+    state.cards,
+    state.isCardFormOpen,
+    id,
+  ));
   return (
     <div className="card">
       <CardUI sx={{ background: 'white' }}>
@@ -26,10 +33,15 @@ function Card({ name, id }) {
           </CardActions>
         </Container>
         <Container sx={{ display: 'flex' }}>
-          <Form
-            className="card-form"
-            id={id}
-          />
+          {
+            isCardFormOpen
+            && (
+            <Form
+              className="card-form"
+              id={id}
+            />
+            )
+          }
         </Container>
       </CardUI>
     </div>

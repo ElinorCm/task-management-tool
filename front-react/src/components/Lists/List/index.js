@@ -10,11 +10,16 @@ import Paper from '@mui/material/Paper';
 
 import Card from 'src/components/Lists/Card';
 import Form from 'src/components/Lists/Form';
-import { findCardsbyListId } from 'src/store/selectors';
+import { filterCardsbyListId, findIsOpenbyListId } from 'src/store/selectors';
 import './list.scss';
 
 function List({ name, id }) {
-  const cards = useSelector((state) => findCardsbyListId(state.cards, id));
+  const cards = useSelector((state) => filterCardsbyListId(state.cards, id));
+  const isListFormOpen = useSelector((state) => findIsOpenbyListId(
+    state.lists,
+    state.isListFormOpen,
+    id,
+  ));
   return (
     <Paper
       elevation={1}
@@ -33,10 +38,14 @@ function List({ name, id }) {
         </CardActions>
       </Container>
       <Container>
-        <Form
-          className="list-form"
-          id={id}
-        />
+        {
+          isListFormOpen && (
+          <Form
+            className="list-form"
+            id={id}
+          />
+          )
+        }
       </Container>
       <CardContent className="card-container">
         {
@@ -44,6 +53,7 @@ function List({ name, id }) {
             <Card
               key={card.id}
               name={card.name}
+              id={card.id}
             />
           ))
         }

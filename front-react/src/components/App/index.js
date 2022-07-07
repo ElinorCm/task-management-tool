@@ -5,7 +5,12 @@ import Header from 'src/components/Header';
 import Lists from 'src/components/Lists';
 import Menu from 'src/components/Menu';
 
-import { createListsInputValue, createCardsInputValue } from 'src/store/actions';
+import {
+  createListsInputValue,
+  createCardsInputValue,
+  createisListFormOpen,
+  createisCardFormOpen,
+} from 'src/store/actions';
 import './styles.scss';
 
 // == Composant
@@ -16,9 +21,11 @@ function App() {
   useEffect(() => {
     lists.forEach((list) => {
       dispatch(createListsInputValue(list.id));
+      dispatch(createisListFormOpen(list.id));
     });
     cards.forEach((card) => {
       dispatch(createCardsInputValue(card.id));
+      dispatch(createisCardFormOpen(card.id));
     });
   }, []);
   return (

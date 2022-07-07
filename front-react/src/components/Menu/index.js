@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
+// import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
 function Menu() {
   return (
@@ -22,12 +22,14 @@ function Menu() {
           </ListItemIcon>
           <ListItemText>Créer une liste</ListItemText>
         </MenuItem>
+        {/*
         <MenuItem sx={{ height: '3.5rem' }}>
           <ListItemIcon>
             <LocalOfferOutlinedIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>Créer un tag</ListItemText>
         </MenuItem>
+        */}
       </MenuList>
     </Paper>
   );
