@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddIcon from '@mui/icons-material/Add';
 import CardActions from '@mui/material/CardActions';
@@ -10,12 +10,19 @@ import Paper from '@mui/material/Paper';
 
 import Card from 'src/components/Lists/Card';
 import Form from 'src/components/Lists/Form';
-import { filterCardsbyListId, findIsOpenbyListId } from 'src/store/selectors';
+import { filterCardsbyListId, findIsOpenbyListId, findInputValuebyListId } from 'src/store/selectors';
+import { toggleListForm } from 'src/store/actions';
 import './list.scss';
 
 function List({ name, id }) {
+  const dispatch = useDispatch();
   const cards = useSelector((state) => filterCardsbyListId(state.cards, id));
   const isListFormOpen = useSelector((state) => findIsOpenbyListId(
+    state.lists,
+    state.listsAttributes,
+    id,
+  ));
+  const listInputValue = useSelector((state) => findInputValuebyListId(
     state.lists,
     state.listsAttributes,
     id,
@@ -31,6 +38,8 @@ function List({ name, id }) {
         <CardHeader
           titleTypographyProps={{ variant: 'subtitle1' }}
           title={name}
+          value={listInputValue}
+          onClick={() => dispatch(toggleListForm(id))}
         />
         <CardActions>
           <AddIcon />

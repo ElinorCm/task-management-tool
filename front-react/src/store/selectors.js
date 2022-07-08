@@ -18,3 +18,10 @@ export function findIsOpenbyCardId(cards, cardsInput, cardId) {
   }
   return false;
 }
+
+export function findInputValuebyListId(lists, listsInput, listId) {
+  if (listsInput.length === lists.length) {
+    return listsInput.find((testedList) => testedList.id === listId).inputValue;
+  }
+  return '';
+}

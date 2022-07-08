@@ -5,6 +5,7 @@ import tags from 'src/data/tags';
 import {
   CREATE_CARDS_ATTRIBUTES,
   CREATE_LISTS_ATTRIBUTES,
+  TOGGLE_LIST_FORM,
 } from 'src/store/actions';
 
 /* eslint-disable default-param-last */
@@ -28,6 +29,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         listsAttributes: [...state.listsAttributes, ...action.value],
+      };
+    case TOGGLE_LIST_FORM:
+      return {
+        ...state,
+        listsAttributes: state.listsAttributes.map(
+          (list) => (list.id === action.id ? { ...list, isOpen: true } : list),
+        ),
       };
     default:
       return state;
