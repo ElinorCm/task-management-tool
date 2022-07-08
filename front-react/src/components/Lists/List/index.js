@@ -17,7 +17,7 @@ function List({ name, id }) {
   const cards = useSelector((state) => filterCardsbyListId(state.cards, id));
   const isListFormOpen = useSelector((state) => findIsOpenbyListId(
     state.lists,
-    state.isListFormOpen,
+    state.listsAttributes,
     id,
   ));
   return (

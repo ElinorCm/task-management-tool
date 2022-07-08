@@ -6,8 +6,8 @@ import Lists from 'src/components/Lists';
 import Menu from 'src/components/Menu';
 
 import {
-  createListsInputValue,
-  createCardsInputValue,
+  createlistsAttributes,
+  createcardsAttributes,
   createisListFormOpen,
   createisCardFormOpen,
 } from 'src/store/actions';
@@ -20,11 +20,11 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     lists.forEach((list) => {
-      dispatch(createListsInputValue(list.id));
+      dispatch(createlistsAttributes(list.id));
       dispatch(createisListFormOpen(list.id));
     });
     cards.forEach((card) => {
-      dispatch(createCardsInputValue(card.id));
+      dispatch(createcardsAttributes(card.id));
       dispatch(createisCardFormOpen(card.id));
     });
   }, []);

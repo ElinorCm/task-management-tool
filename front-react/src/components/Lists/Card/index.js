@@ -16,7 +16,7 @@ import './card.scss';
 function Card({ name, id }) {
   const isCardFormOpen = useSelector((state) => findIsOpenbyCardId(
     state.cards,
-    state.isCardFormOpen,
+    state.cardsAttributes,
     id,
   ));
   return (

@@ -5,18 +5,16 @@ export function filterCardsbyListId(cards, listId) {
   return requiredCards;
 }
 
-export function findIsOpenbyListId(lists, isOpen, id) {
-  let requiredIsOpen;
-  if (lists.length === isOpen.length) {
-    requiredIsOpen = isOpen.find((x) => x.id === id).isFormOpen;
+export function findIsOpenbyListId(lists, listsInput, listId) {
+  if (listsInput.length === lists.length) {
+    return listsInput.find((testedList) => testedList.id === listId).isOpen;
   }
-  return requiredIsOpen;
+  return false;
 }
 
-export function findIsOpenbyCardId(cards, isOpen, id) {
-  let requiredIsOpen;
-  if (cards.length === isOpen.length) {
-    requiredIsOpen = isOpen.find((x) => x.id === id).isFormOpen;
+export function findIsOpenbyCardId(cards, cardsInput, cardId) {
+  if (cardsInput.length === cards.length) {
+    return cardsInput.find((testedList) => testedList.id === cardId).isOpen;
   }
-  return requiredIsOpen;
+  return false;
 }
