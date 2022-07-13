@@ -12,6 +12,6 @@ Docker de la BDD & du back
 
 ## Fonctionnalités en cours de développement
 
-Authentification
-Adaptation du front en React.js
-Docker du front
+Authentification  
+Adaptation du front en React.js  
+Docker du front  
