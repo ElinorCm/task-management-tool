@@ -6,9 +6,9 @@ HTML, CSS, Material UI, JavaScript, React.js, Redux, Node.js, Express, PostgreSQ
 
 ## Fonctionnalités développées
 
-CRUD des listes, des cartes et des tags 
-Drag & drop des tags 
-Docker de la BDD & du back 
+CRUD des listes, des cartes et des tags  
+Drag & drop des tags  
+Docker de la BDD & du back  
 
 ## Fonctionnalités en cours de développement
 
